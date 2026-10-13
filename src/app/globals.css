@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --brand-green: #1b2d2a;
+  --brand-green-light: #243d38;
+  --brand-orange: #f17128;
+  --brand-orange-dark: #d85f1a;
+  --brand-cream: #faf7f4;
+  --brand-muted: #5c6b68;
+  --background: #ffffff;
+  --foreground: #1b2d2a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-light: var(--brand-green-light);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-dark: var(--brand-orange-dark);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-muted: var(--brand-muted);
+  --font-sans: "Nunito", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+body {
+  background-color: #f6f3ef;
+  background-image:
+    radial-gradient(ellipse 42rem 24rem at -8% -6%, rgba(241, 113, 40, 0.1), transparent 70%),
+    radial-gradient(ellipse 36rem 22rem at 108% 10%, rgba(27, 45, 42, 0.06), transparent 72%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: "Nunito", system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 3px;
+}
+
+.page-hero {
+  background-color: var(--brand-cream);
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(241, 113, 40, 0.14), transparent 18rem),
+    radial-gradient(rgba(27, 45, 42, 0.05) 1px, transparent 1px);
+  background-size: auto, 22px 22px;
+}
+
+.section-wash {
+  background-color: #f3efe9;
+  background-image: radial-gradient(rgba(27, 45, 42, 0.045) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.band-dark {
+  background-color: var(--brand-green);
+  background-image:
+    radial-gradient(circle at 8% 0%, rgba(241, 113, 40, 0.22), transparent 16rem),
+    radial-gradient(circle at 100% 130%, rgba(255, 255, 255, 0.08), transparent 18rem);
+}
+
+.font-display {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.kenburns {
+  animation: kenburns 8s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenburns {
+    animation: none;
+  }
+}
