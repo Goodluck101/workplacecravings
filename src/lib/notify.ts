@@ -14,7 +14,7 @@ function mailSettings(): MailSettings {
   const host = process.env.SMTP_HOST?.trim() ?? "";
   const port = Number(process.env.SMTP_PORT?.trim() || "587");
   const user = process.env.SMTP_USER?.trim() ?? "";
-  const pass = process.env.SMTP_PASS?.trim() ?? "";
+  const pass = (process.env.SMTP_PASS ?? "").replace(/\s+/g, "");
   if (!from || !host || !user || !pass || !Number.isFinite(port)) {
     throw new Error("Email delivery is not configured.");
   }
@@ -27,7 +27,11 @@ export async function sendEmail(to: string, subject: string, text: string) {
     host: settings.host,
     port: settings.port,
     secure: settings.port === 465,
+    requireTLS: settings.port === 587,
     auth: { user: settings.user, pass: settings.pass },
+    connectionTimeout: 15_000,
+    greetingTimeout: 15_000,
+    socketTimeout: 20_000,
   });
   await transporter.sendMail({
     from: `${siteConfig.name} <${settings.from}>`,

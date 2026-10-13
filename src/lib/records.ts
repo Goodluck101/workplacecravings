@@ -32,7 +32,7 @@ type Database = {
   orders: WebsiteOrder[];
 };
 
-const directory = path.join(process.cwd(), "data");
+const directory = process.env.DATA_DIR?.trim() || path.join(process.cwd(), "data");
 const file = path.join(directory, "records.json");
 
 let queue: Promise<unknown> = Promise.resolve();

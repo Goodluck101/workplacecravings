@@ -1,0 +1,81 @@
+services:
+  - type: web
+    name: workplacecravings
+    runtime: node
+    plan: starter
+    region: frankfurt
+    branch: main
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: workplacecravings-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.6
+      - key: DATA_DIR
+        value: /var/data
+      - key: NEXT_PUBLIC_BUSINESS_NAME
+        value: Workplace Cravings
+      - key: NEXT_PUBLIC_TAGLINE
+        value: Snacks • Treats • Good Vibes
+      - key: NEXT_PUBLIC_DESCRIPTION
+        value: Premium shawarma, ice cream, parfait, small chops, burgers, and more — delivered across Lagos for teams, events, retailers, and individuals.
+      - key: NEXT_PUBLIC_PHONE
+        value: "+2347062671393"
+      - key: NEXT_PUBLIC_WHATSAPP_URL
+        value: https://chat.whatsapp.com/HJD8n4oBWJn2Yl2AIF5fl8?s=cl&p=a&mlu=4&ilr=4
+      - key: NEXT_PUBLIC_EMAIL
+        value: hello@workplacecravings.com
+      - key: NEXT_PUBLIC_ADDITIONAL_EMAILS
+        value: workplacecravings@gmail.com
+      - key: NEXT_PUBLIC_LOCATION
+        value: Lagos, Nigeria
+      - key: NEXT_PUBLIC_CITY
+        value: Lagos
+      - key: NEXT_PUBLIC_COUNTRY
+        value: Nigeria
+      - key: NEXT_PUBLIC_LOCALE
+        value: en-NG
+      - key: NEXT_PUBLIC_HOURS
+        value: Mon – Sat, 9:00 AM – 8:00 PM
+      - key: NEXT_PUBLIC_CONTENT_UPDATED
+        value: 13 October 2026
+      - key: NEXT_PUBLIC_PHONE_COUNTRY_CODE
+        value: "234"
+      - key: NEXT_PUBLIC_PHONE_GROUPS
+        value: 3,3,4
+      - key: NEXT_PUBLIC_COURIERS
+        value: Chowdeck|https://chowdeck.com/;Glovo|https://glovoapp.com/;Bolt Food|https://food.bolt.eu/;In-house coordination|
+      - key: NEXT_PUBLIC_DATA_REGULATOR_NAME
+        value: Nigeria Data Protection Commission
+      - key: NEXT_PUBLIC_DATA_REGULATOR_URL
+        value: https://ndpc.gov.ng/
+      - key: NEXT_PUBLIC_FOOD_REGULATOR_NAME
+        value: NAFDAC
+      - key: NEXT_PUBLIC_FOOD_REGULATOR_URL
+        value: https://nafdac.gov.ng/
+      - key: NEXT_PUBLIC_GOVERNING_LAW
+        value: the laws of the Federal Republic of Nigeria
+      - key: NEXT_PUBLIC_DATA_LAW
+        value: the Nigeria Data Protection Act 2023
+      - key: NEXT_PUBLIC_SEO_KEYWORDS
+        value: shawarma;corporate catering;office lunch delivery;wholesale snacks
+      - key: NOTIFICATION_FROM_EMAIL
+        value: workplacecravings@gmail.com
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        value: workplacecravings@gmail.com
+      - key: SMTP_PASS
+        sync: false
+      - key: SMS_PROVIDER
+        value: termii
+      - key: SMS_API_URL
+        value: https://api.ng.termii.com/api/sms/send
+      - key: SMS_CHANNEL
+        value: generic
